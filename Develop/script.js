@@ -17,34 +17,50 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+
 // // Write password to the #password input
-var characterOptions = "uppercase letters"; "lowercase letters"; "numbers"; "special characters";
+var passwordText = document.querySelector("#password");
+passwordText.value = password;
 
+var characterOptions = [ "uppercase letters", "lowercase letters", "numbers", "special characters"];
 
-function writePassword() {
-   askLength();
-   askCharacters();
-  generatePassword();
- var passwordText = document.querySelector("#password");
-  passwordText.value = password;
-};
+// function askLength() {
+//   var length = prompt("Length? (Must be greater than 8 and less than 128 ");
+//   if (length>=8 && length<=128) { 
+//   } else {alert("Error:value must be between 8 and 128")};
+//   };
 
-function askLength() {
-  var length = prompt("Length? (Must be greater than 8 and less than 128 ")
-  if (length>=8 && length<=128) {
-  } else {alert("Error:value must be between 8 and 128")};
+function generatePassword() {
+  // askLength
+  var length = prompt("Length? (Must be greater than 8 and less than 128 ");
+  if (length>=8 && length<=128) { 
+  console.log (length);
+  } else {
+    alert("Error:value must be between 8 and 128");
+   return false;
   };
-function askCharacters () {
-  var characters = prompt("Include all character types? (Please type y or n)");
-  if (characters="y") {generatePassword();
-  } else for (let i=0; i = characterOptions.length; i++) {prompt("Include (characters[i]) letters? Please type y or n");
+  // askCharacters
+  var allCharacters = prompt("Include all character types? (Please type y or n)");
+  if (allCharacters=== "y") {
+    console.log (length);
+    console.log(allCharacters);
+  } else for (let i=0; i < characterOptions.length; i++) {
+    console.log (allCharacters);
+    prompt("Include " + characterOptions[i] + "? Please type y or n");
+  console.log(characterOptions[i]);
+  }
 };
-};
 
-function generatePassword() {};
-
+  
 
 
+// function askCharacters () {
+//   var allCharacters = prompt("Include all character types? (Please type y or n)");
+//   console.log(allCharacters);
+//   if (allCharacters=== "y") {generatePassword();
+//   } else for (let i=0; i < characterOptions.length; i++) {prompt("Include " + characterOptions[i] + "? Please type y or n");
+// };
+// };
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", generatePassword);
