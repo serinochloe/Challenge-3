@@ -16,51 +16,72 @@
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+var passwordText = document.querySelector("#password");
+var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var lowerCase = "abcdefghijklmnopqrstuvwxyz";
+var number = "0123456789";
+var symbol = "!@#$%^&*()"
+var allChars =upperCase + lowerCase + number + symbol;
 
 
 // // Write password to the #password input
-var passwordText = document.querySelector("#password");
-passwordText.value = password;
 
-var characterOptions = [ "uppercase letters", "lowercase letters", "numbers", "special characters"];
+function askLength () {
+// askLength
+length = prompt("Length? (Must be greater than 8 and less than 128 ");
+if (length>=8 && length<=128) { 
+console.log (length);
+} else {
+alert("Error:value must be between 8 and 128");
+return false;
+};
+};
 
-// function askLength() {
-//   var length = prompt("Length? (Must be greater than 8 and less than 128 ");
-//   if (length>=8 && length<=128) { 
-//   } else {alert("Error:value must be between 8 and 128")};
-//   };
-
-function generatePassword() {
-  // askLength
-  var length = prompt("Length? (Must be greater than 8 and less than 128 ");
-  if (length>=8 && length<=128) { 
-  console.log (length);
-  } else {
-    alert("Error:value must be between 8 and 128");
-   return false;
-  };
-  // askCharacters
-  var allCharacters = prompt("Include all character types? (Please type y or n)");
-  if (allCharacters=== "y") {
-    console.log (length);
+function askCharacters() {
+// askCharacters
+  // var characterOptions = [ "uppercase letters", "lowercase letters", "numbers", "special characters"];
+allCharacters = prompt("Include all character types? (Please type y or n)");
+if (allCharacters=== "y") {
+  console.log(allCharacters);
+  } else if (allCharacters === "n") { 
     console.log(allCharacters);
-  } else for (let i=0; i < characterOptions.length; i++) {
-    console.log (allCharacters);
-    prompt("Include " + characterOptions[i] + "? Please type y or n");
-  console.log(characterOptions[i]);
-  }
+    upperSelection = prompt("Include uppercase letters? Please type y or n");
+    console.log(upperSelection);
+    lowerSelection = prompt("Include lowercase letters? Please type y or n");
+    console.log(lowerSelection);
+    numberSelection = prompt("Include numbers? Please type y or n");
+    console.log(numberSelection);
+    symbolSelection = prompt("Include special characters? Please type y or n");
+    console.log(symbolSelection);
+    } else if (allCharacters !== "y" || "n") {
+    alert("Error:value must be y or n");
+    return false;
+    };
+  };
+
+function writePassword() {
+    let password ="";
+    if (allCharacters === "y") {
+    password += upperCase[Math.floor(Math.random() * upperCase.length)];
+    password += lowerCase[Math.floor(Math.random() * lowerCase.length)];
+    password += number[Math.floor(Math.random() * number.length)];
+    password += symbol[Math.floor(Math.random() * symbol.length)];
+     while (length > password.length){
+     password += allChars [Math.floor(Math.random() * allChars.length)];
+     console.log(password);
+    passwordText.value = password};
+   } else if (allCharacters === "n") {
+    return false;
+
+   };
 };
 
   
-
-
-// function askCharacters () {
-//   var allCharacters = prompt("Include all character types? (Please type y or n)");
-//   console.log(allCharacters);
-//   if (allCharacters=== "y") {generatePassword();
-//   } else for (let i=0; i < characterOptions.length; i++) {prompt("Include " + characterOptions[i] + "? Please type y or n");
-// };
-// };
-
 // Add event listener to generate button
 generateBtn.addEventListener("click", generatePassword);
+
+function generatePassword() {
+  askLength();
+  askCharacters();
+  writePassword();
+};
