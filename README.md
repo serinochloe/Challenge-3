@@ -1,5 +1,10 @@
-# conflict-resolution
+# Random Password Generator
 
-## This is created on Github 
+## Description
 
-All of this content added to the readme file has been added from my remote GitHub repository.
+This is a random password generator showcasing Javascript skills including adding event listeners, defining and calling functions, integrating user input, and displaying random strings in the HTML. 
+
+## Link 
+
+
+
