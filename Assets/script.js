@@ -27,10 +27,8 @@ var allChars =upperCase + lowerCase + number + symbol;
 // // Write password to the #password input
 
 function askLength () {
-// askLength
 length = prompt("Length? (Must be greater than 8 and less than 128 ");
 if (length>=8 && length<=128) { 
-console.log (length);
 } else {
 alert("Error:value must be between 8 and 128");
 return false;
@@ -38,21 +36,13 @@ return false;
 };
 
 function askCharacters() {
-// askCharacters
-  // var characterOptions = [ "uppercase letters", "lowercase letters", "numbers", "special characters"];
 allCharacters = prompt("Include all character types? (Please type y or n)");
 if (allCharacters=== "y") {
-  console.log(allCharacters);
   } else if (allCharacters === "n") { 
-    console.log(allCharacters);
     upperSelection = prompt("Include uppercase letters? Please type y or n");
-    console.log(upperSelection);
     lowerSelection = prompt("Include lowercase letters? Please type y or n");
-    console.log(lowerSelection);
     numberSelection = prompt("Include numbers? Please type y or n");
-    console.log(numberSelection);
     symbolSelection = prompt("Include special characters? Please type y or n");
-    console.log(symbolSelection);
     } else if (allCharacters !== "y" || "n") {
     alert("Error:value must be y or n");
     return false;
@@ -60,19 +50,17 @@ if (allCharacters=== "y") {
   };
 
 function writePassword() {
-    let password ="";
-    if (allCharacters === "y") {
-    password += upperCase[Math.floor(Math.random() * upperCase.length)];
-    password += lowerCase[Math.floor(Math.random() * lowerCase.length)];
-    password += number[Math.floor(Math.random() * number.length)];
-    password += symbol[Math.floor(Math.random() * symbol.length)];
-     while (length > password.length){
-     password += allChars [Math.floor(Math.random() * allChars.length)];
-     console.log(password);
-    passwordText.value = password};
-   } else if (allCharacters === "n") {
-    return false;
-
+  let password ="";
+  if (allCharacters === "y") {
+  password += upperCase[Math.floor(Math.random() * upperCase.length)];
+  password += lowerCase[Math.floor(Math.random() * lowerCase.length)];
+  password += number[Math.floor(Math.random() * number.length)];
+  password += symbol[Math.floor(Math.random() * symbol.length)];
+  while (length > password.length){
+  password += allChars [Math.floor(Math.random() * allChars.length)];
+  passwordText.value = password};
+  } else if (allCharacters === "n") {
+  return false;
    };
 };
 
