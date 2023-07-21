@@ -39,34 +39,56 @@ function askCharacters() {
 allCharacters = prompt("Include all character types? (Please type y or n)");
 if (allCharacters=== "y") {
   } else if (allCharacters === "n") { 
-    upperSelection = prompt("Include uppercase letters? Please type y or n");
-    lowerSelection = prompt("Include lowercase letters? Please type y or n");
-    numberSelection = prompt("Include numbers? Please type y or n");
-    symbolSelection = prompt("Include special characters? Please type y or n");
-    } else if (allCharacters !== "y" || "n") {
+    askSpecifics();
+  } else if (allCharacters !== "y" || "n") {
     alert("Error:value must be y or n");
-    return false;
-    };
+    return false};
   };
+function askSpecifics() {
+  upperSelection = prompt("Include uppercase letters? Please type y or n");
+  lowerSelection = prompt("Include lowercase letters? Please type y or n");
+  numberSelection = prompt("Include numbers? Please type y or n");
+  symbolSelection = prompt("Include special characters? Please type y or n");
+};
 
 function writePassword() {
   let password ="";
   if (allCharacters === "y") {
-  password += upperCase[Math.floor(Math.random() * upperCase.length)];
-  password += lowerCase[Math.floor(Math.random() * lowerCase.length)];
-  password += number[Math.floor(Math.random() * number.length)];
-  password += symbol[Math.floor(Math.random() * symbol.length)];
+  // password += upperCase[Math.floor(Math.random() * upperCase.length)];
+  // password += lowerCase[Math.floor(Math.random() * lowerCase.length)];
+  // password += number[Math.floor(Math.random() * number.length)];
+  // password += symbol[Math.floor(Math.random() * symbol.length)];
   while (length > password.length){
-  password += allChars [Math.floor(Math.random() * allChars.length)];
-  passwordText.value = password};
+    password += allChars [Math.floor(Math.random() * allChars.length)];
+    passwordText.value = password};
   } else if (allCharacters === "n") {
-  return false;
-   };
+  if (upperSelection === "y") {
+    var uppers= password += upperCase[Math.floor(Math.random() * upperCase.length)]; 
+    } else if (upperSelection === "n") {};
+  if (lowerSelection === "y"){ 
+    var lowers = password += lowerCase[Math.floor(Math.random() * lowerCase.length)]; 
+    } else if (lowerSelection === "n") {};
+  if (numberSelection === "y"){ 
+    var nums = password += number[Math.floor(Math.random() * number.length)]; 
+    } else if (numberSelection === "n") {};
+  if (symbolSelection === "y"){ 
+    var symbs = password += symbol[Math.floor(Math.random() * symbol.length)]; 
+    }  else if (symbol === "n") {};
+  while (length > password.length){
+    chars = (uppers + lowers + nums + symbs) 
+    password += uppers[Math.floor(Math.random() * uppers.length)];
+    password += lowers[Math.floor(Math.random() * lowers.length)];
+    password += nums[Math.floor(Math.random() * nums.length)];
+    password += symbs[Math.floor(Math.random() * symbs.length)];
+    passwordText.value = password};
+  };
 };
+
 
   
 // Add event listener to generate button
 generateBtn.addEventListener("click", generatePassword);
+
 
 function generatePassword() {
   askLength();
